@@ -1,0 +1,1 @@
+Currently having some trouble getting VMWare to work, says I need to have AMD-V enabled but having trouble with my bios and getting that enabled.
