@@ -27,7 +27,7 @@ Output:
         Type: Response
         Daytime: \n60202 23-09-15 00:23:41 50 0 0  35.9 UTC(NIST) * \n
 
-6. Synchornize
+6. Synchronize
 
 7. Acknowledgement
 
