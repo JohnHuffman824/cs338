@@ -1,0 +1,56 @@
+Jack Huffman
+
+Output:
+
+1	0.000000000	192.168.225.128	132.163.96.1	TCP	74	56030 → 13 [SYN] Seq=0 Win=64240 Len=0 MSS=1460 SACK_PERM TSval=174624670 TSecr=0 WS=128
+2	0.033324784	132.163.96.1	192.168.225.128	TCP	60	13 → 56030 [SYN, ACK] Seq=0 Ack=1 Win=64240 Len=0 MSS=1460
+3	0.033381263	192.168.225.128	132.163.96.1	TCP	54	56030 → 13 [ACK] Seq=1 Ack=1 Win=64240 Len=0
+4	0.066423781	132.163.96.1	192.168.225.128	DAYTIME	105	DAYTIME Response
+5	0.066547279	192.168.225.128	132.163.96.1	TCP	54	56030 → 13 [FIN, ACK] Seq=1 Ack=53 Win=64188 Len=0
+6	0.066690117	132.163.96.1	192.168.225.128	TCP	60	13 → 56030 [ACK] Seq=53 Ack=2 Win=64239 Len=0
+
+---Daytime Protocol Answers---
+
+1. The TCP handshake can be seen in the first three frames. In the first frame the client sends a synchornization request to the server.
+    In the second frame the server sends back the synchornization and acknowledgement packet.
+    In the third frame the client sends another acknowledgement packet to the server
+
+2. Port 56030
+
+3. A randomly assigned number is used to ensure we have a unique connection between our client and server
+
+4. The fourth frame contains the daytime response data
+
+5. Aside from the Ethernet, IP, and TCP headers this frame contains the data information received from the NIST server in the format "YYYY-MM-DD HH:MM:SS" additionally there
+    appears to be some metadata associated with the server that is being translated, including NIST which represents the server
+    Daytime Protocol
+        Type: Response
+        Daytime: \n60202 23-09-15 00:23:41 50 0 0  35.9 UTC(NIST) * \n
+
+6. Synchornize
+
+7. Acknowledgement
+
+8. Finish
+
+9. The server initiated the finishing of the connection because we can see our client sending a finish and acknowledgement which means it acknowledged that the server is finishing
+
+
+
+---HTTP---
+
+1. There were two TCP connections because a TCP connections requires a SYN, ACK response and there were two of these found
+
+2. If we look at what was my 5th frame we can see an HTTP GET request which represents where we request the home page data.
+    5	0.048636972	192.168.225.128	45.79.89.123	HTTP	408	GET /index.html HTTP/1.1 
+
+3. If we look at what was my 11th frame we can see an HTTP GET request which represents where we request the photograph
+    11	0.134035713	192.168.225.128	45.79.89.123	HTTP	377	GET /jeff_square_head.jpg HTTP/1.1 
+
+
+
+---Questions--- 
+
+What does PSH mean and how does it work?
+How does TCP keep alive work and what is it's purpose?
+How can we use tools like wireshark to do more indepth analysis and potential cooler hacker stuff?
