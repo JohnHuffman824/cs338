@@ -1,3 +1,7 @@
+Jack Huffman
+CS338 Computer Security
+Jeff Ondich
+
 Private Key:
 
 The private key starts with a header and ends with a footer denoting the start and end of the private key.
