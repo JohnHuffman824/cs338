@@ -1,0 +1,90 @@
+Jack Huffman
+CS338 Computer Security
+Jeff Ondich
+
+Assumptions:
+
+- Symmetric Encryption Algorithm AES, AES(K, M) where K = key and M = message, AES_D(K, C) decrypting cipher text C
+- Diffie-Hellman key exchange procedure
+- Cryptographic hash function SHA-256, hashing of message M is H(M)
+- Public and Secret key pairs for everybody (P, S), Alice has (P_A, S_A) and Bob has (P_B, S_B)
+
+Scenario 1: Alice wants to send Bob a long message, and she doesn't want Eve to be able to read it. Assume for this scenario that AITM is impossible.
+
+Alice and Bob don't want their encryption key to be spied upon by Eve so they can use a Diffie-Hellman key exchange to agreed on a shared secret key
+that can't be intercepted by Eve. They do this by using their public and secret key pairs and some g, p and modulus that will 
+be used to generate their shared key K. Alice will then encrypt her long message M using AES with the shared key K and CBC
+This results in a cipher text C where C = AES(K, M)
+Alice will then send C to Bob
+Bob can then use the shared secret K to turn the cipher text into the plain text of the message
+
+***Hashing needed???***
+
+Scenario 2: Alice wants to send Bob a long message. She doesn't want Mal to be able to modify the message without Bob detecting the change.
+
+Given that we can assume that Bob has access to Alice's public key and vice versa, we can do a similar process to the first scenario but with an added step
+We would again use Diffie-Hellman to generate a key pair for them to communicate with and Alice would still send the message using this cryptographic key K
+In addition to the steps outlined in scenario 1 though, Alice would also generate a SHA-256 hash of her message M such that we have H_M = H(M)
+Alice will then encrypt her hash with her secret key S_A such that she will have a signature Sig = E(S_A, H_M)'
+This means Sig is the hash of her message encrypted with her secret key, she will send this to Bob (or who she thinks is bob) as well as the cipher text of her message
+Once bob receives the message, he can decrypt the cipher text with the shared secret K just as in scenario 1 to produce the plain text M' (it is M' because we aren't certain it hasn't been affected by Mal) but can also use the additional information Sig to ensure the message wasn't altered
+To do this, Bob would use Alice's public key to undo the encryption of Sig such that he has a hash H_B = E(P_A, Sig)
+He would then compute a SHA-256 hash of M' such that H_M' = H(M') and could then check to see if H_B and H_M' are the samem if they are the same then he can be sure that the message hasn't been altered as only Alice has access to her private key
+
+Scenario 3:
+
+To do this we can once again have Alice and Bob agree on a shared key K using Diffie-Hellman as in scenario 1.
+To ensure Bob knows he is talking to Alice, we can have alice generate a hash of the contract H_M = H(M)
+Alice can then create a signature of that hash using her private key Sig = E(S_A, H_M)
+Alice can then send this Sig in addition to the cipher text of the contract (C = AES(K, M)) to Bob
+Bob can decrypt the cipher text C into plain text M' to access the contract
+To ensure that Bob knows he is talking to Alice, he can use Alice's public key to decrypt the signature to get a hash of the message H_B = E(P_A, Sig)
+He can then compute a hash of the plain text H_M' = H(M') and compare H_M' to H_B
+Given that only Alice has access to the private key we can be sure that we are talking to Alice if H_M' and H_B are the same
+
+
+Scenario 4:
+
+    a. Alice may be able to claim that someone like Mal intercepted her communication with Bob and tampered with the document and then sent it to Bob.
+    This scenario doesn't seem particularly likely given that Alice would likely need to justify why Mal would want to alter the document in addition to
+    proving that the connection was not secure. Perhaps Bob didn't verify that it was Alice that he was talking to, this could lead to an insecurity where 
+    Mal was potentially impersonating Alice to Bob and impersonating Bob to Alice. This type of attack is commonly reffered to as Adversary In The Middle or AITM
+
+    b. Alice may be able to claim that her digital signature was forged by someone who wished harm, perhaps Bob or a third party. This could be very plausible
+    if Alice was able to prove that her secret key S_A was leaked or insecure. This would also raise into question why Alice used a key which was insecure and 
+    the fault may end up falling on her shoulders. 
+
+    c. Alice may be able to claim that there was simply corruption of the data due to techincal issues or network problems. This could be due to a solar flare,
+    file transfer protocal or network disruptions. This seems unlikely as network are typically secure and for corruption to occur and to still have a readable
+    contract result would be highly unlikely. Given the typically stable nature of network connects this would seem like a cop-out excuse for Alice which would
+    be very difficult to prove in a court of law
+
+Scenario 5:
+
+Sig_CA = E(S_CA, H("bob.com" || P_B))
+
+Scenario 6:
+
+No, simply recieving the certificate is not enough to verify that Alice is talking to Bob, to verify this Alice would take the following steps
+
+    1. Verify Cert_B using the certificate authoritiy's public key P_CA (makes sure the domain name and other info matches)
+
+    2. Alice sends a random challenge message C to Bob 
+
+    3. Bob receives the challenge message C and encrypts it using his private key S_B to produce an encrypted message Sig_B = E(S_B, C)
+
+    4. Bob sends his signed challenge message Sig_B back to Alice
+
+    5. Alice decrypts Sig_B using the public key P_B that is obtained from Cert_B to produce C' where C' = E(P_B, Sig_B) if C == C' then we know Bob has S_B
+
+If Alice completes these steps then she can be confident that she is indeed talking to Bob
+
+Scenario 7:
+
+Perhaps the most obvious way that this certificate verification could be subverted by Mal would be if Mal had access to Bob's private key. If Mal had Bob's private key
+Mal could then impersonate Bob and subsequently pass Alice's 'challenge' for Bob. This of course relies on there being an insecurity on Bob's end which could prove detrimental
+if Bob was a particulaly important service, such as Google.
+Mal may also be able to impersonate a certificate authority, whether this is obtaining their secret key or by creating a fradulent certificate that appears to be legitimate.
+Creating a fradulent certificate may likely mean that they create a false organization or successfully imitate a authority organization.
+It may also be possible that the certificate authority is not as secure as it appears, if this is the case Mal could use this to their advantage and issue fradulent certificates
+
