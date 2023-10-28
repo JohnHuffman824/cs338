@@ -1,0 +1,65 @@
+Part 1
+Total time: 00.407496 seconds
+Number of hashes computed: 267516 
+Passwords cracked: 2734
+Time per hash computed: 0.407496/267516 = 1.52325842192617E-06 seconds per hash
+Time per password cracked: 0.407496/2734 = 0.0001490475493782 seconds per password
+Passwords cracked per number of hashes computed: 2734/267516 = 0.0102199494609668 passwords per hash computed
+
+Part 2
+Total time: 0:36:38.331630 or 2198.331630 seconds
+Number of hashes computed: 1730185007 
+Passwords cracked: 64
+Time per hash computed: 2198.331630/1730185007 = 1.27057604886528E-06 seconds per hash
+Time per password cracked: 2198.331630/64 = 34.34893171875 seconds per password cracked
+Passwords cracked per number of hashes computed: 64/1730185007 = 3.69902638972527E-08 passwords cracked per hash computed
+
+Part 3
+Total time: 0:06:57.081201 or 417.081201 seconds
+Number of hashes computed: 368016265 
+Passwords cracked: 2734
+Time per hash computed: 417.081201/368016265 = 1.13332273778715E-06 seconds per hash computed
+Time per password cracked: 417.081201/2734 = 0.152553475128018 seconds per password cracked
+Passwords cracked per number of hashes computed: 2734/368016265 = 7.42901947553867E-06 passwords cracked per hash computed
+
+Analysis:
+- Did your time per hash computed change between phases? By what factor? Why?
+    My time per hash computed may have changed slightly but this is likely just due to natural variance or slight differences in constant time operations. Overall, the amount
+    of time it took to compute one hash was basically the same and this is because computing the hash is effectively a constant time operation. The hash function was the 
+    same in all of the parts and the only change between each part (in regards to computing hashes) was the associated constant time
+- Did your time per password crack change between phases? By what factor? Why?
+    My time per password crack did increase significantly between each part. The first part went very fast because I simply precomputed the hashes of all 276516 words, which
+    may seem like alot but is a relatively small amount in context, and then iterated through the list of hashed password and did a constant time dictionary lookup of the hash.
+    This means that I only had to iterate through the list of words once and was subsequently able to do a constant time operation for each line of passwords1.txt to find the
+    appropriate hash. With part 2 however, it took much longer to crack these passwords because I had to esssentially check every word in words.txt against every other words in
+    words.txt. This means if I wanted to be certain that I have a dictionary which contains all the hashes of possible passwords there would need to be 276516*276516 different
+    computations made (76461098256 computations). Put simply, for every line in words.txt I iterated through the entirety of words.txt again and computed a hash of the two lines
+    concatenated and whenever this hash happened to correspond to a hash in my dictionary (used dictionary to ensure constant time lookup) of hashes from passwords2.txt I knew I
+    cracked a password. Part 3 was somewhat of a middle ground between these two cases. I didn't have to iterate through words.txt once, neither did I have to iterate through
+    words.txt 276516 times, instead I had to iterate through it at most 2734 times. Not only is this number much smaller than 276516 and thus much more manageable, I was able to
+    put a break command whenever I found the correct word and thus able to save a considerable amount of unnecessary computation. What I did simply for part 3 was take the salt 
+    associated with the username and hash pair in question and concatenate that salt with everyline in words.txt until the hash of that concatenation was the hash I was looking
+    for, then I broke the loop. This means that if the word was found early in the list of words.txt then it wouldn't unnecessarily compute hashes for the rest of words.txt.
+    Ultimately, part 1 had the fastest time per password cracked at 0.0001490475493782 seconds. When you compare this to part 2's 34.34893171875 seconds you see that we increased our time to
+    crack a password by a factor of roughly 230456 times. In part 3 we had a time per password cracked of 0.152553475128018 seconds, relative to part 1 we increase our time to crack
+    by a factor of roughly 1023. Ultimately this goes to show the increased security associated with modifying our passwords only slighly (adding another word or salting it).
+- Suppose you wanted to precompute all the hashes for each possible password
+so you could just look up the password in a table indexed by the hash. How much
+memory would be required for each phase?
+    The memory required for part 1 would be (number of words) * ((size of hash) + (size of password) + (overhead per mapping)), this means it would come out to 
+    267516 * (32 + 16 + 32) = 267516 * 80 = 21401280 bytes
+    The memory required for part 2 would be (number of two word combos) * ((size of hash) + (size of password) + (overhead per mapping))
+    (267516 * 267516) * (32 + 16 + 32) = 76461098256 * 80 = 6116887860480 bytes
+    The memory required for part 3 would be for every salt you would need to create a hash of every word in words.txt so it would be 
+    ((number of words in words.txt)*(number of users in passwords3.txt)) * ((size of hash) + (size of password) + (overhead per mapping))
+    (267516 * 2734) * (32 + 16 + 32) = 731388744 * 80 = 58511099520 bytes
+- Give 3-4 reasons we should store password hashes and not the passwords themselves.
+Think in terms of threats, who the attackers might be, etc.
+    One reason that we should store password hashes instead of the passwords themselves is that if there was an external data breach, (i.e. someone hacked in to the database) then
+    the attacker wouldn't be able to immediately see what the password is but instead would need to do a good amount of work to find out what the password is that got hashed to that value.
+    Another good reason hashes should be used is to defend against insider threats. We like to assume that companies like google have our best interest in mind, but if these people with
+    access to the database can simply see our passwords then they are in great harm. Additionally, the company/entity storing the password shouldn't care about what the password actually
+    is, but rather that they have enough information to verify someone is who they say they are (hashes make this achieveable in practice, assuming the user hasn't leaked their password).
+    Addtionally, the use of salting with hashing helps greatly to reduce the threat of password reuse attacks. By having a pseudo-random string added to the end of your commonly used password,
+    it will produce vastly different hashes depending on the salt. This helps protect users who have the same password across multiple services. Overall, the ability of hashes to be easy 
+    to compute one way and difficult to compute in another proves to be a valuable tool when it comes to data security.

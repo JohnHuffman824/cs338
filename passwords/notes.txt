@@ -1,0 +1,80 @@
+Time to run the first one
+0:00:00.407496 seconds
+267516 hashes computed
+
+Time data for second
+
+Username: mullanj2 || Password: aardwolfinherence || Elapsed time: 0:00:04.075551
+Username: biny || Password: abactorsagios || Elapsed time: 0:00:10.770926
+Username: cwoida || Password: abeyanceunparadises || Elapsed time: 0:01:14.862156
+Username: gansc || Password: abranchiatesunninesses || Elapsed time: 0:02:54.849533
+Username: pfeldman || Password: abreactsmastectomy || Elapsed time: 0:03:03.305058
+Username: schultzm || Password: abstentiontints || Elapsed time: 0:04:13.890877
+Username: swarups || Password: abstrusenessfearsomely || Elapsed time: 0:04:33.162668
+Username: cokera || Password: abundancyyodellers || Elapsed time: 0:04:44.020048
+Username: bisiol || Password: abysmalfarinhas || Elapsed time: 0:04:58.855156
+Username: wilsont2 || Password: academistletterspacings || Elapsed time: 0:05:08.276183
+Username: bowersj2 || Password: acalephansmoosewoods || Elapsed time: 0:05:12.303837
+Username: zhangm3 || Password: accentingunsociability || Elapsed time: 0:05:47.964805
+Username: mohamedh2 || Password: accidentalityendures || Elapsed time: 0:06:17.356961
+Username: keithahnh2 || Password: acclimatelazing || Elapsed time: 0:06:30.912762
+Username: moyerj2 || Password: accordionssorbose || Elapsed time: 0:07:07.757081
+Username: bestert || Password: accoyedlargitions || Elapsed time: 0:07:26.381708
+Username: mcclintockl || Password: acculturatehyacines || Elapsed time: 0:07:39.154284
+Username: chuc || Password: acetouspidginised || Elapsed time: 0:08:31.216564
+Username: rubinpopea || Password: achievementslissomly || Elapsed time: 0:08:47.096942
+Username: lians || Password: acouchysteeding || Elapsed time: 0:09:59.236456
+Username: anyiwee || Password: acquiescencesrhatanies || Elapsed time: 0:10:04.878241
+Username: seths || Password: acritarchsepiloguing || Elapsed time: 0:10:32.196807
+Username: brownl3 || Password: acrophobesscapegoatisms || Elapsed time: 0:10:50.285426
+Username: murphya2 || Password: acrophobiasvedutisti || Elapsed time: 0:10:50.984869
+Username: kiskers || Password: acrylonitrilescambles || Elapsed time: 0:11:01.627502
+Username: zhangj9 || Password: adjudgesravigottes || Elapsed time: 0:14:03.619661
+Username: winstonl2 || Password: adjurorsscutellation || Elapsed time: 0:14:14.534050
+Username: zhangd3 || Password: admissibilitypartitioner || Elapsed time: 0:14:46.392964
+Username: steinl2 || Password: admonishingmiscounted || Elapsed time: 0:14:55.729081
+Username: mail || Password: adulterizinglactation || Elapsed time: 0:15:57.172101
+Username: tordib || Password: advantagedweanel || Elapsed time: 0:16:11.371797
+Username: baldoj || Password: adventuristsmudskippers || Elapsed time: 0:16:23.914694
+Username: moshfeghih || Password: adverbialisesbyelaws || Elapsed time: 0:16:26.429094
+Username: sanid || Password: adverbiallycredenza || Elapsed time: 0:16:28.472917
+Username: lenniea || Password: advoutrystyptical || Elapsed time: 0:17:05.847261
+Username: daleyj || Password: adwardfirstborns || Elapsed time: 0:17:06.745293
+Username: wangs7 || Password: adwomenneem || Elapsed time: 0:17:09.412669
+Username: leee2 || Password: aerobegnamma || Elapsed time: 0:17:46.896613
+Username: lie2 || Password: aerophobesuneasier || Elapsed time: 0:18:28.944567
+Username: stametsm || Password: aesthesiogenhomie || Elapsed time: 0:18:52.058590
+Username: barkerk || Password: afforcesjackplanes || Elapsed time: 0:20:05.780419
+Username: lic4 || Password: aficionadosdactylographic || Elapsed time: 0:20:33.355977
+Username: fortsone || Password: afterwordsmnemonically || Elapsed time: 0:21:13.415563
+Username: tianz || Password: agapesgeoducks || Elapsed time: 0:21:30.652278
+Username: mensendiekh || Password: agarmetamales || Elapsed time: 0:21:31.047963
+Username: jellinge || Password: agitpopvegges || Elapsed time: 0:22:59.540638
+Username: christopho || Password: agonothetesviolating || Elapsed time: 0:23:33.268373
+Username: ismaily || Password: agorotdisputability || Elapsed time: 0:23:37.528733
+Username: frym || Password: agreeabilitynursemaid || Elapsed time: 0:23:48.537584
+Username: vanormani || Password: ailourophobictoileted || Elapsed time: 0:25:00.574200
+Username: chowdhuryt || Password: airwomancircumspectly || Elapsed time: 0:26:08.144014
+Username: jimenezc || Password: albuminoidshereticate || Elapsed time: 0:27:43.120830
+Username: laveys || Password: alcoholicallycontentless || Elapsed time: 0:28:05.045873
+Username: strubeliramm || Password: aldermancurtailment || Elapsed time: 0:28:20.870417
+Username: robinsonj2 || Password: alertingoverborn || Elapsed time: 0:28:52.330773
+Username: renz || Password: alexipharmakonstormentedly || Elapsed time: 0:29:04.649282
+Username: smiths2 || Password: algatebookworm || Elapsed time: 0:29:18.749084
+Username: cyandell || Password: allanitestripartition || Elapsed time: 0:30:57.085858
+Username: moriyamaa || Password: almugslommock || Elapsed time: 0:33:33.056412
+Username: franchotl || Password: alveariestansies || Elapsed time: 0:35:15.475512
+Username: velasquezc || Password: amarnabottled || Elapsed time: 0:35:40.485865
+Username: yuana || Password: amazinglyadjuvancy || Elapsed time: 0:36:00.486890
+Username: maldonadoj || Password: amblyopiaingrossed || Elapsed time: 0:36:35.863467
+Username: franzene || Password: ambonesoutquoting || Elapsed time: 0:36:38.331630
+
+
+AMBONES 6467
+
+outquoting 159035
+
+total words 267516
+
+
+6467*267516 + 159035 = 1730185007 hashes computed
