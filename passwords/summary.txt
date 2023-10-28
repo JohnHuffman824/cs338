@@ -1,3 +1,7 @@
+Jack Huffman
+CS338 Computer Security
+Jeff Ondich
+
 Part 1
 Total time: 00.407496 seconds
 Number of hashes computed: 267516 
