@@ -1,0 +1,47 @@
+Jack Huffman
+CS338 Computer Security
+Jeff Ondich
+
+Part 1: Cookies
+
+a. At this moment there is only one cookie which has the name 'theme' and the value of 'default'
+
+b. I changed the theme to red and the value of the cookie 'theme' changed to the value of 'red'
+
+c. When I open it with burpsuite and turn intercept on we see that the cookie initially gets set to default just as before. When we go to change the theme to red to we send a GET
+request which includes theme=red in the header but still has the original cookie: theme = default in the body section. By the next packet we receive however, the cookie theme value
+changes to the desired red.
+
+d. Yes, when I quit the browser and relaunched the FDF the theme is still saved as red
+
+e. It appears that the cookie, which is stored on our local device, attaches the value of the cookie in the intial http GET request to the server thus communicating to the FDF server
+that we wish to have a theme which is red.
+
+f. The change is transmitted by keeping the value of the cookie itself the same, but sending additional information in the header (such as theme=blue) which tells the server that we
+wish to switch the themes. The server will then recognize this and during its reponse change our cookie theme value to the correct value. Ultimately, the browser itself is not changing
+it's cookies but instead tells the FDF that it wants to change its theme and then the server responds with the appropriate HTTP response and accompanying cookie setting.
+
+g. You could manually go in and change the value of the cookie that is stored in your browser.
+
+h. When you intercept the HTTP GET request that gets sent to the FDF server you could manually change the value of the cookie that is sent to the server. This will result in the server
+interpreting the request as having a theme of the altered value. More consicely, changing the value of the cookie ni the packet changes how the FDF server will respond.
+
+i. I use google chrome so my cookies are stored at the following location C:\Users\Your_User_Name\AppData\Local\Google\Chrome\User Data\Default\Network
+
+
+Part 2: Cross-Site Scripting (XSS)
+
+a. Moriarty executes his attack by adding javascript code to his post. Thus, when a user clicks on their post to view it their browser executes the javascript code. Therefore, by
+putting some javascript code in your post you could have a specfic piece of code be executed on victims computers
+
+b. One possible attack that Moriarty could do would be to inject some javascript code which would steal cookie information of the person who clicks your post. This is possible because
+javascript would have access to the data via Alice's browser
+
+c. A potentially more malicious attack thyat Moriarty could do would be to create a pop up which says something to the affect of 'Error, logout occured. Please enter username and password to log back in'
+If Moriarty is able to execute this attack successfully they would be able to collect many peoples log in information by injecting this code which prompts users for their logins and sends the
+data to Moriarty
+
+d. One way of protecting against cross site scripting would be to validate user inputs on both the client and server side. By not allowing syntax which could be interpreted as executable code you can
+help to protect against attacks like the one moriarty pulled off in our scenario. Another way this can be preveted is if you implement a Content Security Policy (CSP) header in the web applications response.
+This would define which specific resources can be loaded, thus limiting (or reducing) the execution of scripts and thus reducing the risk of cross site scripting. One more way would be to encode data as it's outputted
+to prevent it from being misinterpreted as a potentially active script. 
